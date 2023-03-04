@@ -1,6 +1,7 @@
 /unit
 /unit.json
 /.unit.json
+*.err
 
 /_corral
 /_repos

@@ -27,7 +27,7 @@ actor SSH is Conn
 
   be run(env: Env, command: String, ecs: ExitcodeSetter) =>
     // TODO: push git repository
-    Run(env, "/run/current-system/sw/bin/ssh", ["ssh"; _host; command], ecs)
+    Run(_name, env, "/run/current-system/sw/bin/ssh", ["ssh"; _host; command], ecs)
 
 actor Local is Conn
   let _name: String
@@ -36,4 +36,4 @@ actor Local is Conn
     _name = name
 
   be run(env: Env, command: String, ecs: ExitcodeSetter) =>
-    Run(env, "/bin/sh", ["sh"; "-c"; command], ecs)
+    Run(_name, env, "/bin/sh", ["sh"; "-c"; command], ecs)
