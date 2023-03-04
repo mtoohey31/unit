@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/mtoohey31/unit/main/schema.json",
+  "title": "unit config",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "hosts": {
+      "type": "object",
+      "patternProperties": {
+        "^.*$": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "local": {
+                  "type": "object",
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "local"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "ssh": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "ssh"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "command",
+    "hosts"
+  ],
+  "additionalProperties": false
+}

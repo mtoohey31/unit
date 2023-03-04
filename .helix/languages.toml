@@ -1,0 +1,8 @@
+[[language]]
+name = "pony"
+scope = "source.pony"
+injection-regex = "pony"
+file-types = ["pony"]
+roots = []
+comment-token = "//"
+indent = { tab-width = 2, unit = "  " }
