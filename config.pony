@@ -4,6 +4,7 @@ use "json"
 class Config
   let command: String
   let conns: Array[Conn]
+  var prefix_len: USize = 0
 
   new create(env: Env) ? =>
     // TODO: warn about unrecognized entries in all the parsing below
@@ -85,6 +86,10 @@ class Config
     conns = Array[Conn]()
 
     for (name, host_json) in hosts_obj.data.pairs() do
+      if name.size() > prefix_len then
+        prefix_len = name.size()
+      end
+
       let host_obj = try
         host_json as JsonObject
       else
